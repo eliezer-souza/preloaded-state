@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+
+import { Types } from './store/counterReducer';
 
 class App extends Component {
+  increment = () => (
+    this.props.dispatch({ type: Types.INCREMENT })
+  );
+
+  decrement = () => (
+    this.props.dispatch({ type: Types.DECREMENT })
+  );
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+          <h1>{this.props.counter}</h1> 
+          <button onClick={this.increment}>Increment</button>   
+          <button onClick={this.decrement}>Decrement</button>
+        </div>
     );
   }
 }
 
-export default App;
+export default connect(state => state.counter)(App);
