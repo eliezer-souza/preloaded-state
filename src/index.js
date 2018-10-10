@@ -5,9 +5,9 @@ import configureStore from './store';
 
 import App from './App';
 
-configureStore.then((response) =>
+configureStore.then((store) =>
   ReactDOM.render(
-    <Provider store={response}>
+    <Provider store={store}>
       <App />
     </Provider>, 
     document.getElementById('root')));

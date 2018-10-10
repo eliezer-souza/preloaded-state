@@ -14,7 +14,7 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
+        <div>
           <h1>{this.props.counter}</h1> 
           <button onClick={this.increment}>Increment</button>   
           <button onClick={this.decrement}>Decrement</button>

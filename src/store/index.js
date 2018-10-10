@@ -3,7 +3,7 @@ import counter, { INITIAL_STATE } from './counterReducer';
 import todos from './todosReducer';
 import axios from 'axios';
 
-const app = combineReducers({
+const reducers = combineReducers({
   counter,
   todos
 });
@@ -19,7 +19,7 @@ function getCounter() {
 
 const configureStore = getCounter().then((response) => {
     const preloadedState = { counter: Object.assign(INITIAL_STATE, response.data) };
-    const store = createStore(app, preloadedState);
+    const store = createStore(reducers, preloadedState);
   
     console.log(store.getState());
   
